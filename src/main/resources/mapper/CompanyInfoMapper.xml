@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.igeekhome.colloa.mapper.CompanyInfoMapper">
+  <resultMap id="BaseResultMap" type="com.igeekhome.colloa.domain.CompanyInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="category_code" jdbcType="CHAR" property="categoryCode" />
+    <result column="company_code" jdbcType="CHAR" property="companyCode" />
+    <result column="leader_code" jdbcType="CHAR" property="leaderCode" />
+    <result column="company_name" jdbcType="CHAR" property="companyName" />
+    <result column="company_desc" jdbcType="VARCHAR" property="companyDesc" />
+    <result column="company_tel" jdbcType="CHAR" property="companyTel" />
+    <result column="company_addr" jdbcType="CHAR" property="companyAddr" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="available" jdbcType="INTEGER" property="available" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, category_code, company_code, leader_code, company_name, company_desc, company_tel, 
+    company_addr, create_time, status, available
+  </sql>
+  <select id="selectByExample" parameterType="com.igeekhome.colloa.domain.CompanyInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from company_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from company_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from company_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.igeekhome.colloa.domain.CompanyInfoExample">
+    delete from company_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.igeekhome.colloa.domain.CompanyInfo">
+    insert into company_info (id, category_code, company_code, 
+      leader_code, company_name, company_desc, 
+      company_tel, company_addr, create_time, 
+      status, available)
+    values (#{id,jdbcType=BIGINT}, #{categoryCode,jdbcType=CHAR}, #{companyCode,jdbcType=CHAR}, 
+      #{leaderCode,jdbcType=CHAR}, #{companyName,jdbcType=CHAR}, #{companyDesc,jdbcType=VARCHAR}, 
+      #{companyTel,jdbcType=CHAR}, #{companyAddr,jdbcType=CHAR}, #{createTime,jdbcType=DATE}, 
+      #{status,jdbcType=INTEGER}, #{available,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.igeekhome.colloa.domain.CompanyInfo">
+    insert into company_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="categoryCode != null">
+        category_code,
+      </if>
+      <if test="companyCode != null">
+        company_code,
+      </if>
+      <if test="leaderCode != null">
+        leader_code,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyDesc != null">
+        company_desc,
+      </if>
+      <if test="companyTel != null">
+        company_tel,
+      </if>
+      <if test="companyAddr != null">
+        company_addr,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="available != null">
+        available,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="categoryCode != null">
+        #{categoryCode,jdbcType=CHAR},
+      </if>
+      <if test="companyCode != null">
+        #{companyCode,jdbcType=CHAR},
+      </if>
+      <if test="leaderCode != null">
+        #{leaderCode,jdbcType=CHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=CHAR},
+      </if>
+      <if test="companyDesc != null">
+        #{companyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null">
+        #{companyTel,jdbcType=CHAR},
+      </if>
+      <if test="companyAddr != null">
+        #{companyAddr,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="available != null">
+        #{available,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.igeekhome.colloa.domain.CompanyInfoExample" resultType="java.lang.Long">
+    select count(*) from company_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update company_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.categoryCode != null">
+        category_code = #{record.categoryCode,jdbcType=CHAR},
+      </if>
+      <if test="record.companyCode != null">
+        company_code = #{record.companyCode,jdbcType=CHAR},
+      </if>
+      <if test="record.leaderCode != null">
+        leader_code = #{record.leaderCode,jdbcType=CHAR},
+      </if>
+      <if test="record.companyName != null">
+        company_name = #{record.companyName,jdbcType=CHAR},
+      </if>
+      <if test="record.companyDesc != null">
+        company_desc = #{record.companyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyTel != null">
+        company_tel = #{record.companyTel,jdbcType=CHAR},
+      </if>
+      <if test="record.companyAddr != null">
+        company_addr = #{record.companyAddr,jdbcType=CHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=DATE},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.available != null">
+        available = #{record.available,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update company_info
+    set id = #{record.id,jdbcType=BIGINT},
+      category_code = #{record.categoryCode,jdbcType=CHAR},
+      company_code = #{record.companyCode,jdbcType=CHAR},
+      leader_code = #{record.leaderCode,jdbcType=CHAR},
+      company_name = #{record.companyName,jdbcType=CHAR},
+      company_desc = #{record.companyDesc,jdbcType=VARCHAR},
+      company_tel = #{record.companyTel,jdbcType=CHAR},
+      company_addr = #{record.companyAddr,jdbcType=CHAR},
+      create_time = #{record.createTime,jdbcType=DATE},
+      status = #{record.status,jdbcType=INTEGER},
+      available = #{record.available,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeekhome.colloa.domain.CompanyInfo">
+    update company_info
+    <set>
+      <if test="categoryCode != null">
+        category_code = #{categoryCode,jdbcType=CHAR},
+      </if>
+      <if test="companyCode != null">
+        company_code = #{companyCode,jdbcType=CHAR},
+      </if>
+      <if test="leaderCode != null">
+        leader_code = #{leaderCode,jdbcType=CHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=CHAR},
+      </if>
+      <if test="companyDesc != null">
+        company_desc = #{companyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null">
+        company_tel = #{companyTel,jdbcType=CHAR},
+      </if>
+      <if test="companyAddr != null">
+        company_addr = #{companyAddr,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="available != null">
+        available = #{available,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.igeekhome.colloa.domain.CompanyInfo">
+    update company_info
+    set category_code = #{categoryCode,jdbcType=CHAR},
+      company_code = #{companyCode,jdbcType=CHAR},
+      leader_code = #{leaderCode,jdbcType=CHAR},
+      company_name = #{companyName,jdbcType=CHAR},
+      company_desc = #{companyDesc,jdbcType=VARCHAR},
+      company_tel = #{companyTel,jdbcType=CHAR},
+      company_addr = #{companyAddr,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      available = #{available,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
