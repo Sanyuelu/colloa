@@ -11,7 +11,7 @@ import com.igeekhome.colloa.util.TableDataNode;
 public interface InternalPhoneBookService {
 
     /**
-     * 获取公司内部全部职员信息,将从数据库中检索到的职员信息封装到TableDataNode对象中
+     * 1、获取公司内部全部职员信息,将从数据库中检索到的职员信息封装到TableDataNode对象中
      * 用于支持LayUI Table 数据项
      *
      * @param page  当前页
@@ -21,7 +21,7 @@ public interface InternalPhoneBookService {
     TableDataNode queryAllEmployee(Integer page, Integer limit);
 
     /**
-     * 获取子公司的全部职员信息
+     * 2、获取子公司的全部职员信息
      *
      * @param page        当前页
      * @param limit       每页的条数
@@ -33,7 +33,7 @@ public interface InternalPhoneBookService {
                                          String CompanyCode);
 
     /**
-     * 获取子公司的某个部门的全部职员信息
+     * 3.获取子公司的某个部门的全部职员信息
      *
      * @param page        当前页
      * @param limit       每页的条数
@@ -47,7 +47,7 @@ public interface InternalPhoneBookService {
                                             String DepaCode);
 
     /**
-     * 模糊查询员工
+     * 4.模糊查询员工
      *
      * @param page      当前页
      * @param limit     每页的条数
@@ -59,14 +59,14 @@ public interface InternalPhoneBookService {
                                            EmployeeCondition condition);
 
     /**
-     * 获取所有的公司信息
+     * 5.获取所有的公司信息
      *
      * @return
      */
     ResultObject queryAllCompany();
 
     /**
-     * 查询某个公司下面的所有部门
+     * 6.查询某个公司下面的所有部门
      *
      * @param CompanyCode 公司编号
      * @return
@@ -74,7 +74,7 @@ public interface InternalPhoneBookService {
     ResultObject queryDepartmentByCompany(String CompanyCode);
 
     /**
-     * 更新员工的通讯信息
+     * 7.更新员工的通讯信息
      *
      * @param condition 员工通讯信息
      * @return

@@ -11,14 +11,14 @@ import com.igeekhome.colloa.util.TableDataNode;
 public interface ExternalPhoneBookService {
 
     /**
-     * 获取所有的外部通讯录的类别信息
+     * 1.获取所有的外部通讯录的类别信息
      *
      * @return
      */
     ResultObject queryAllCategory();
 
     /**
-     * 获取外部通讯录所有联系人的联系方式
+     * 2.获取外部通讯录所有联系人的联系方式
      *
      * @param page
      * @param limit
@@ -28,7 +28,7 @@ public interface ExternalPhoneBookService {
                                    Integer limit);
 
     /**
-     * 获取外部通讯录中某一类别中所有联系人方式
+     * 3.获取外部通讯录中某一类别中所有联系人方式
      *
      * @param page
      * @param limit
@@ -39,7 +39,7 @@ public interface ExternalPhoneBookService {
                                           String cateCode);
 
     /**
-     * 模糊查询外部联系人信息
+     * 4.模糊查询外部联系人信息
      *
      * @param page      当前页
      * @param limit     每页的条数
@@ -49,8 +49,9 @@ public interface ExternalPhoneBookService {
     TableDataNode queryContactsByCondition(Integer page,
                                            Integer limit,
                                            ExternalInfo condition);
+
     /**
-     * 新增外部联系人
+     * 5.新增外部联系人
      *
      * @param contact
      * @return
@@ -58,7 +59,7 @@ public interface ExternalPhoneBookService {
     ResultObject addContact(ExternalInfo contact);
 
     /**
-     * 更新外部联系人
+     * 6.更新外部联系人
      *
      * @param contact
      * @return
@@ -66,7 +67,7 @@ public interface ExternalPhoneBookService {
     ResultObject updateContact(ExternalInfo contact);
 
     /**
-     * 修改外部联系人可用状态(逻辑删除)
+     * 7.修改外部联系人可用状态(逻辑删除)
      *
      * @param contactCode 外部联系人编号
      * @return
