@@ -885,183 +885,183 @@ public class MessageInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableIsNull() {
-            addCriterion("sender_avaliable is null");
+        public Criteria andSenderAvailableIsNull() {
+            addCriterion("sender_available is null");
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableIsNotNull() {
-            addCriterion("sender_avaliable is not null");
+        public Criteria andSenderAvailableIsNotNull() {
+            addCriterion("sender_available is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableEqualTo(Integer value) {
-            addCriterion("sender_avaliable =", value, "senderAvaliable");
+        public Criteria andSenderAvailableEqualTo(Integer value) {
+            addCriterion("sender_available =", value, "senderAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableNotEqualTo(Integer value) {
-            addCriterion("sender_avaliable <>", value, "senderAvaliable");
+        public Criteria andSenderAvailableNotEqualTo(Integer value) {
+            addCriterion("sender_available <>", value, "senderAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableGreaterThan(Integer value) {
-            addCriterion("sender_avaliable >", value, "senderAvaliable");
+        public Criteria andSenderAvailableGreaterThan(Integer value) {
+            addCriterion("sender_available >", value, "senderAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sender_avaliable >=", value, "senderAvaliable");
+        public Criteria andSenderAvailableGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sender_available >=", value, "senderAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableLessThan(Integer value) {
-            addCriterion("sender_avaliable <", value, "senderAvaliable");
+        public Criteria andSenderAvailableLessThan(Integer value) {
+            addCriterion("sender_available <", value, "senderAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableLessThanOrEqualTo(Integer value) {
-            addCriterion("sender_avaliable <=", value, "senderAvaliable");
+        public Criteria andSenderAvailableLessThanOrEqualTo(Integer value) {
+            addCriterion("sender_available <=", value, "senderAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableIn(List<Integer> values) {
-            addCriterion("sender_avaliable in", values, "senderAvaliable");
+        public Criteria andSenderAvailableIn(List<Integer> values) {
+            addCriterion("sender_available in", values, "senderAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableNotIn(List<Integer> values) {
-            addCriterion("sender_avaliable not in", values, "senderAvaliable");
+        public Criteria andSenderAvailableNotIn(List<Integer> values) {
+            addCriterion("sender_available not in", values, "senderAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableBetween(Integer value1, Integer value2) {
-            addCriterion("sender_avaliable between", value1, value2, "senderAvaliable");
+        public Criteria andSenderAvailableBetween(Integer value1, Integer value2) {
+            addCriterion("sender_available between", value1, value2, "senderAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andSenderAvaliableNotBetween(Integer value1, Integer value2) {
-            addCriterion("sender_avaliable not between", value1, value2, "senderAvaliable");
+        public Criteria andSenderAvailableNotBetween(Integer value1, Integer value2) {
+            addCriterion("sender_available not between", value1, value2, "senderAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableIsNull() {
-            addCriterion("receiver_avaliable is null");
+        public Criteria andReceiverAvailableIsNull() {
+            addCriterion("receiver_available is null");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableIsNotNull() {
-            addCriterion("receiver_avaliable is not null");
+        public Criteria andReceiverAvailableIsNotNull() {
+            addCriterion("receiver_available is not null");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableEqualTo(Integer value) {
-            addCriterion("receiver_avaliable =", value, "receiverAvaliable");
+        public Criteria andReceiverAvailableEqualTo(Integer value) {
+            addCriterion("receiver_available =", value, "receiverAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableNotEqualTo(Integer value) {
-            addCriterion("receiver_avaliable <>", value, "receiverAvaliable");
+        public Criteria andReceiverAvailableNotEqualTo(Integer value) {
+            addCriterion("receiver_available <>", value, "receiverAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableGreaterThan(Integer value) {
-            addCriterion("receiver_avaliable >", value, "receiverAvaliable");
+        public Criteria andReceiverAvailableGreaterThan(Integer value) {
+            addCriterion("receiver_available >", value, "receiverAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableGreaterThanOrEqualTo(Integer value) {
-            addCriterion("receiver_avaliable >=", value, "receiverAvaliable");
+        public Criteria andReceiverAvailableGreaterThanOrEqualTo(Integer value) {
+            addCriterion("receiver_available >=", value, "receiverAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableLessThan(Integer value) {
-            addCriterion("receiver_avaliable <", value, "receiverAvaliable");
+        public Criteria andReceiverAvailableLessThan(Integer value) {
+            addCriterion("receiver_available <", value, "receiverAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableLessThanOrEqualTo(Integer value) {
-            addCriterion("receiver_avaliable <=", value, "receiverAvaliable");
+        public Criteria andReceiverAvailableLessThanOrEqualTo(Integer value) {
+            addCriterion("receiver_available <=", value, "receiverAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableIn(List<Integer> values) {
-            addCriterion("receiver_avaliable in", values, "receiverAvaliable");
+        public Criteria andReceiverAvailableIn(List<Integer> values) {
+            addCriterion("receiver_available in", values, "receiverAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableNotIn(List<Integer> values) {
-            addCriterion("receiver_avaliable not in", values, "receiverAvaliable");
+        public Criteria andReceiverAvailableNotIn(List<Integer> values) {
+            addCriterion("receiver_available not in", values, "receiverAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableBetween(Integer value1, Integer value2) {
-            addCriterion("receiver_avaliable between", value1, value2, "receiverAvaliable");
+        public Criteria andReceiverAvailableBetween(Integer value1, Integer value2) {
+            addCriterion("receiver_available between", value1, value2, "receiverAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andReceiverAvaliableNotBetween(Integer value1, Integer value2) {
-            addCriterion("receiver_avaliable not between", value1, value2, "receiverAvaliable");
+        public Criteria andReceiverAvailableNotBetween(Integer value1, Integer value2) {
+            addCriterion("receiver_available not between", value1, value2, "receiverAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableIsNull() {
-            addCriterion("avaliable is null");
+        public Criteria andAvailableIsNull() {
+            addCriterion("available is null");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableIsNotNull() {
-            addCriterion("avaliable is not null");
+        public Criteria andAvailableIsNotNull() {
+            addCriterion("available is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableEqualTo(Integer value) {
-            addCriterion("avaliable =", value, "avaliable");
+        public Criteria andAvailableEqualTo(Integer value) {
+            addCriterion("available =", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableNotEqualTo(Integer value) {
-            addCriterion("avaliable <>", value, "avaliable");
+        public Criteria andAvailableNotEqualTo(Integer value) {
+            addCriterion("available <>", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableGreaterThan(Integer value) {
-            addCriterion("avaliable >", value, "avaliable");
+        public Criteria andAvailableGreaterThan(Integer value) {
+            addCriterion("available >", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableGreaterThanOrEqualTo(Integer value) {
-            addCriterion("avaliable >=", value, "avaliable");
+        public Criteria andAvailableGreaterThanOrEqualTo(Integer value) {
+            addCriterion("available >=", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableLessThan(Integer value) {
-            addCriterion("avaliable <", value, "avaliable");
+        public Criteria andAvailableLessThan(Integer value) {
+            addCriterion("available <", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableLessThanOrEqualTo(Integer value) {
-            addCriterion("avaliable <=", value, "avaliable");
+        public Criteria andAvailableLessThanOrEqualTo(Integer value) {
+            addCriterion("available <=", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableIn(List<Integer> values) {
-            addCriterion("avaliable in", values, "avaliable");
+        public Criteria andAvailableIn(List<Integer> values) {
+            addCriterion("available in", values, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableNotIn(List<Integer> values) {
-            addCriterion("avaliable not in", values, "avaliable");
+        public Criteria andAvailableNotIn(List<Integer> values) {
+            addCriterion("available not in", values, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableBetween(Integer value1, Integer value2) {
-            addCriterion("avaliable between", value1, value2, "avaliable");
+        public Criteria andAvailableBetween(Integer value1, Integer value2) {
+            addCriterion("available between", value1, value2, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvaliableNotBetween(Integer value1, Integer value2) {
-            addCriterion("avaliable not between", value1, value2, "avaliable");
+        public Criteria andAvailableNotBetween(Integer value1, Integer value2) {
+            addCriterion("available not between", value1, value2, "available");
             return (Criteria) this;
         }
     }

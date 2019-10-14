@@ -27,11 +27,11 @@ public class MessageInfo {
 
     private Integer priority;
 
-    private Integer senderAvaliable;
+    private Integer senderAvailable;
 
-    private Integer receiverAvaliable;
+    private Integer receiverAvailable;
 
-    private Integer avaliable;
+    private Integer available;
 
     public Long getId() {
         return id;
@@ -129,27 +129,27 @@ public class MessageInfo {
         this.priority = priority;
     }
 
-    public Integer getSenderAvaliable() {
-        return senderAvaliable;
+    public Integer getSenderAvailable() {
+        return senderAvailable;
     }
 
-    public void setSenderAvaliable(Integer senderAvaliable) {
-        this.senderAvaliable = senderAvaliable;
+    public void setSenderAvailable(Integer senderAvailable) {
+        this.senderAvailable = senderAvailable;
     }
 
-    public Integer getReceiverAvaliable() {
-        return receiverAvaliable;
+    public Integer getReceiverAvailable() {
+        return receiverAvailable;
     }
 
-    public void setReceiverAvaliable(Integer receiverAvaliable) {
-        this.receiverAvaliable = receiverAvaliable;
+    public void setReceiverAvailable(Integer receiverAvailable) {
+        this.receiverAvailable = receiverAvailable;
     }
 
-    public Integer getAvaliable() {
-        return avaliable;
+    public Integer getAvailable() {
+        return available;
     }
 
-    public void setAvaliable(Integer avaliable) {
-        this.avaliable = avaliable;
+    public void setAvailable(Integer available) {
+        this.available = available;
     }
 }

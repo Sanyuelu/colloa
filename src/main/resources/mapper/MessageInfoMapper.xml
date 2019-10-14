@@ -14,9 +14,9 @@
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="is_star" jdbcType="INTEGER" property="isStar" />
     <result column="priority" jdbcType="INTEGER" property="priority" />
-    <result column="sender_avaliable" jdbcType="INTEGER" property="senderAvaliable" />
-    <result column="receiver_avaliable" jdbcType="INTEGER" property="receiverAvaliable" />
-    <result column="avaliable" jdbcType="INTEGER" property="avaliable" />
+    <result column="sender_available" jdbcType="INTEGER" property="senderAvailable" />
+    <result column="receiver_available" jdbcType="INTEGER" property="receiverAvailable" />
+    <result column="available" jdbcType="INTEGER" property="available" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, message_code, sender_code, receiver_code, theme, content, file_url, create_time, 
-    update_time, status, is_star, priority, sender_avaliable, receiver_avaliable, avaliable
+    update_time, status, is_star, priority, sender_available, receiver_available, available
   </sql>
   <select id="selectByExample" parameterType="com.igeekhome.colloa.domain.MessageInfoExample" resultMap="BaseResultMap">
     select
@@ -115,13 +115,13 @@
       receiver_code, theme, content, 
       file_url, create_time, update_time, 
       status, is_star, priority, 
-      sender_avaliable, receiver_avaliable, avaliable
+      sender_available, receiver_available, available
       )
     values (#{id,jdbcType=BIGINT}, #{messageCode,jdbcType=VARCHAR}, #{senderCode,jdbcType=VARCHAR}, 
       #{receiverCode,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
       #{fileUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=INTEGER}, #{isStar,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, 
-      #{senderAvaliable,jdbcType=INTEGER}, #{receiverAvaliable,jdbcType=INTEGER}, #{avaliable,jdbcType=INTEGER}
+      #{senderAvailable,jdbcType=INTEGER}, #{receiverAvailable,jdbcType=INTEGER}, #{available,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.igeekhome.colloa.domain.MessageInfo">
@@ -163,14 +163,14 @@
       <if test="priority != null">
         priority,
       </if>
-      <if test="senderAvaliable != null">
-        sender_avaliable,
+      <if test="senderAvailable != null">
+        sender_available,
       </if>
-      <if test="receiverAvaliable != null">
-        receiver_avaliable,
+      <if test="receiverAvailable != null">
+        receiver_available,
       </if>
-      <if test="avaliable != null">
-        avaliable,
+      <if test="available != null">
+        available,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -210,14 +210,14 @@
       <if test="priority != null">
         #{priority,jdbcType=INTEGER},
       </if>
-      <if test="senderAvaliable != null">
-        #{senderAvaliable,jdbcType=INTEGER},
+      <if test="senderAvailable != null">
+        #{senderAvailable,jdbcType=INTEGER},
       </if>
-      <if test="receiverAvaliable != null">
-        #{receiverAvaliable,jdbcType=INTEGER},
+      <if test="receiverAvailable != null">
+        #{receiverAvailable,jdbcType=INTEGER},
       </if>
-      <if test="avaliable != null">
-        #{avaliable,jdbcType=INTEGER},
+      <if test="available != null">
+        #{available,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -266,14 +266,14 @@
       <if test="record.priority != null">
         priority = #{record.priority,jdbcType=INTEGER},
       </if>
-      <if test="record.senderAvaliable != null">
-        sender_avaliable = #{record.senderAvaliable,jdbcType=INTEGER},
+      <if test="record.senderAvailable != null">
+        sender_available = #{record.senderAvailable,jdbcType=INTEGER},
       </if>
-      <if test="record.receiverAvaliable != null">
-        receiver_avaliable = #{record.receiverAvaliable,jdbcType=INTEGER},
+      <if test="record.receiverAvailable != null">
+        receiver_available = #{record.receiverAvailable,jdbcType=INTEGER},
       </if>
-      <if test="record.avaliable != null">
-        avaliable = #{record.avaliable,jdbcType=INTEGER},
+      <if test="record.available != null">
+        available = #{record.available,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -294,9 +294,9 @@
       status = #{record.status,jdbcType=INTEGER},
       is_star = #{record.isStar,jdbcType=INTEGER},
       priority = #{record.priority,jdbcType=INTEGER},
-      sender_avaliable = #{record.senderAvaliable,jdbcType=INTEGER},
-      receiver_avaliable = #{record.receiverAvaliable,jdbcType=INTEGER},
-      avaliable = #{record.avaliable,jdbcType=INTEGER}
+      sender_available = #{record.senderAvailable,jdbcType=INTEGER},
+      receiver_available = #{record.receiverAvailable,jdbcType=INTEGER},
+      available = #{record.available,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -337,14 +337,14 @@
       <if test="priority != null">
         priority = #{priority,jdbcType=INTEGER},
       </if>
-      <if test="senderAvaliable != null">
-        sender_avaliable = #{senderAvaliable,jdbcType=INTEGER},
+      <if test="senderAvailable != null">
+        sender_available = #{senderAvailable,jdbcType=INTEGER},
       </if>
-      <if test="receiverAvaliable != null">
-        receiver_avaliable = #{receiverAvaliable,jdbcType=INTEGER},
+      <if test="receiverAvailable != null">
+        receiver_available = #{receiverAvailable,jdbcType=INTEGER},
       </if>
-      <if test="avaliable != null">
-        avaliable = #{avaliable,jdbcType=INTEGER},
+      <if test="available != null">
+        available = #{available,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -362,9 +362,9 @@
       status = #{status,jdbcType=INTEGER},
       is_star = #{isStar,jdbcType=INTEGER},
       priority = #{priority,jdbcType=INTEGER},
-      sender_avaliable = #{senderAvaliable,jdbcType=INTEGER},
-      receiver_avaliable = #{receiverAvaliable,jdbcType=INTEGER},
-      avaliable = #{avaliable,jdbcType=INTEGER}
+      sender_available = #{senderAvailable,jdbcType=INTEGER},
+      receiver_available = #{receiverAvailable,jdbcType=INTEGER},
+      available = #{available,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
