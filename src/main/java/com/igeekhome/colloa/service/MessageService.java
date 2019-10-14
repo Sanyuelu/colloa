@@ -8,6 +8,7 @@ import com.igeekhome.colloa.util.TableDataNode;
 /**
  * 电子消息服务接口
  * 消息状态[0:未读,1:已读,2:已发送,3:草稿箱]
+ * 星标消息[0:非星标,1:星标]
  */
 
 public interface MessageService {
@@ -20,7 +21,7 @@ public interface MessageService {
      * @param receiverEmplCode 员工(消息接收人)编号
      * @return
      */
-    TableDataNode queryUnreadMessage(Integer page,
+    TableDataNode queryUnReadMessage(Integer page,
                                      Integer limit,
                                      String receiverEmplCode);
 
