@@ -21,7 +21,9 @@ public class MessageInfo {
 
     private Date updateTime;
 
-    private Integer status;
+    private Integer sendStatus;
+
+    private Integer readStatus;
 
     private Integer isStar;
 
@@ -105,12 +107,20 @@ public class MessageInfo {
         this.updateTime = updateTime;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getSendStatus() {
+        return sendStatus;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setSendStatus(Integer sendStatus) {
+        this.sendStatus = sendStatus;
+    }
+
+    public Integer getReadStatus() {
+        return readStatus;
+    }
+
+    public void setReadStatus(Integer readStatus) {
+        this.readStatus = readStatus;
     }
 
     public Integer getIsStar() {

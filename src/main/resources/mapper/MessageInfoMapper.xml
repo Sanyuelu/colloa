@@ -11,7 +11,8 @@
     <result column="file_url" jdbcType="VARCHAR" property="fileUrl" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="send_status" jdbcType="INTEGER" property="sendStatus" />
+    <result column="read_status" jdbcType="INTEGER" property="readStatus" />
     <result column="is_star" jdbcType="INTEGER" property="isStar" />
     <result column="priority" jdbcType="INTEGER" property="priority" />
     <result column="sender_available" jdbcType="INTEGER" property="senderAvailable" />
@@ -78,7 +79,8 @@
   </sql>
   <sql id="Base_Column_List">
     id, message_code, sender_code, receiver_code, theme, content, file_url, create_time, 
-    update_time, status, is_star, priority, sender_available, receiver_available, available
+    update_time, send_status, read_status, is_star, priority, sender_available, receiver_available, 
+    available
   </sql>
   <select id="selectByExample" parameterType="com.igeekhome.colloa.domain.MessageInfoExample" resultMap="BaseResultMap">
     select
@@ -114,15 +116,15 @@
     insert into message_info (id, message_code, sender_code, 
       receiver_code, theme, content, 
       file_url, create_time, update_time, 
-      status, is_star, priority, 
-      sender_available, receiver_available, available
-      )
+      send_status, read_status, is_star, 
+      priority, sender_available, receiver_available, 
+      available)
     values (#{id,jdbcType=BIGINT}, #{messageCode,jdbcType=VARCHAR}, #{senderCode,jdbcType=VARCHAR}, 
       #{receiverCode,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
       #{fileUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=INTEGER}, #{isStar,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, 
-      #{senderAvailable,jdbcType=INTEGER}, #{receiverAvailable,jdbcType=INTEGER}, #{available,jdbcType=INTEGER}
-      )
+      #{sendStatus,jdbcType=INTEGER}, #{readStatus,jdbcType=INTEGER}, #{isStar,jdbcType=INTEGER}, 
+      #{priority,jdbcType=INTEGER}, #{senderAvailable,jdbcType=INTEGER}, #{receiverAvailable,jdbcType=INTEGER}, 
+      #{available,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.igeekhome.colloa.domain.MessageInfo">
     insert into message_info
@@ -154,8 +156,11 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="status != null">
-        status,
+      <if test="sendStatus != null">
+        send_status,
+      </if>
+      <if test="readStatus != null">
+        read_status,
       </if>
       <if test="isStar != null">
         is_star,
@@ -201,8 +206,11 @@
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
+      <if test="sendStatus != null">
+        #{sendStatus,jdbcType=INTEGER},
+      </if>
+      <if test="readStatus != null">
+        #{readStatus,jdbcType=INTEGER},
       </if>
       <if test="isStar != null">
         #{isStar,jdbcType=INTEGER},
@@ -257,8 +265,11 @@
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
+      <if test="record.sendStatus != null">
+        send_status = #{record.sendStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.readStatus != null">
+        read_status = #{record.readStatus,jdbcType=INTEGER},
       </if>
       <if test="record.isStar != null">
         is_star = #{record.isStar,jdbcType=INTEGER},
@@ -291,7 +302,8 @@
       file_url = #{record.fileUrl,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      status = #{record.status,jdbcType=INTEGER},
+      send_status = #{record.sendStatus,jdbcType=INTEGER},
+      read_status = #{record.readStatus,jdbcType=INTEGER},
       is_star = #{record.isStar,jdbcType=INTEGER},
       priority = #{record.priority,jdbcType=INTEGER},
       sender_available = #{record.senderAvailable,jdbcType=INTEGER},
@@ -328,8 +340,11 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
+      <if test="sendStatus != null">
+        send_status = #{sendStatus,jdbcType=INTEGER},
+      </if>
+      <if test="readStatus != null">
+        read_status = #{readStatus,jdbcType=INTEGER},
       </if>
       <if test="isStar != null">
         is_star = #{isStar,jdbcType=INTEGER},
@@ -359,7 +374,8 @@
       file_url = #{fileUrl,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=INTEGER},
+      send_status = #{sendStatus,jdbcType=INTEGER},
+      read_status = #{readStatus,jdbcType=INTEGER},
       is_star = #{isStar,jdbcType=INTEGER},
       priority = #{priority,jdbcType=INTEGER},
       sender_available = #{senderAvailable,jdbcType=INTEGER},

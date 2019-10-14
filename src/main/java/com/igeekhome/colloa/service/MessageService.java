@@ -1,7 +1,7 @@
 package com.igeekhome.colloa.service;
 
-import com.igeekhome.colloa.condition.MessageCondition;
 import com.igeekhome.colloa.domain.MessageInfo;
+import com.igeekhome.colloa.dto.MessageInfoDTO;
 import com.igeekhome.colloa.util.ResultObject;
 import com.igeekhome.colloa.util.TableDataNode;
 
@@ -20,48 +20,48 @@ public interface MessageService {
      * @param limit
      * @param receiverEmplCode 员工(消息接收人)编号
      * @return
-     */
+     *//*
     TableDataNode queryUnReadMessage(Integer page,
                                      Integer limit,
                                      String receiverEmplCode);
 
-    /**
+    *//**
      * 2.检索所有已读消息[1]
      *
      * @param page
      * @param limit
      * @param receiverEmplCode 员工(消息接收人)编号
      * @return
-     */
+     *//*
     TableDataNode queryReadMessage(Integer page,
                                    Integer limit,
                                    String receiverEmplCode);
 
-    /**
+    *//**
      * 3.检索所有已经发送的消息[2]
      *
      * @param page
      * @param limit
-     * @param receiverEmplCode 员工(消息接收人)编号
+     * @param senderEmplCode 员工(消息接收人)编号
      * @return
-     */
+     *//*
     TableDataNode querySentMessage(Integer page,
                                    Integer limit,
-                                   String receiverEmplCode);
+                                   String senderEmplCode);
 
-    /**
+    *//**
      * 4.检索保存在草稿箱中的消息[3]
      *
      * @param page
      * @param limit
-     * @param receiverEmplCode 员工(消息接收人)编号
+     * @param senderEmplCode 员工(消息创建人)编号
      * @return
-     */
+     *//*
     TableDataNode queryDraftMessage(Integer page,
                                     Integer limit,
-                                    String receiverEmplCode);
+                                    String senderEmplCode);
 
-    /**
+    *//**
      * 5.检索设为星标的消息
      * 星标消息[0:非星标,1:星标]
      *
@@ -69,18 +69,47 @@ public interface MessageService {
      * @param limit
      * @param receiverEmplCode 员工(消息接收人)编号
      * @return
-     */
+     *//*
     TableDataNode queryStarMessage(Integer page,
                                    Integer limit,
                                    String receiverEmplCode);
 
-    /**
-     * 6.模糊查询 (时间条件查询不实现)
+    *//**
+     * 6.1模糊查询 (时间条件查询不实现)
      *
+     * @param page
+     * @param limit
+     * @param condition 查询条件[主题、收件人、发件人、时间段]
+     * @return
+     *//*
+    TableDataNode querySelfMessageByCondition(Integer page,
+                                              Integer limit,
+                                              MessageInfoDTO condition);*/
+
+    /**
+     * 6.1模糊查询 (时间条件查询不实现)
+     *
+     * @param page
+     * @param limit
      * @param condition 查询条件[主题、收件人、发件人、时间段]
      * @return
      */
-    TableDataNode queryMessageByCondition(MessageCondition condition);
+    TableDataNode querySelfMessageByCondition(Integer page,
+                                          Integer limit,
+                                          MessageInfoDTO condition);
+
+    /**
+     * 6.2模糊查询 (管理员查询管理)
+     *
+     * @param page
+     * @param limit
+     * @param condition 查询条件[主题、收件人、发件人、时间段]
+     * @return
+     */
+    TableDataNode queryMessageByCondition(Integer page,
+                                          Integer limit,
+                                          MessageInfoDTO condition);
+
 
     /**
      * 7.查看消息详情
@@ -128,6 +157,6 @@ public interface MessageService {
      * @param messageCode 消息编号
      * @return
      */
-    ResultObject removeMessage(String messageCode);
+    ResultObject removeMessage(String messageCode,Integer deleteTypeCode);
 
 }
