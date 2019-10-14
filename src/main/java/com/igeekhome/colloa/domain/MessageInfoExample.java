@@ -705,63 +705,123 @@ public class MessageInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusIsNull() {
-            addCriterion("status is null");
+        public Criteria andSendStatusIsNull() {
+            addCriterion("send_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIsNotNull() {
-            addCriterion("status is not null");
+        public Criteria andSendStatusIsNotNull() {
+            addCriterion("send_status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(Integer value) {
-            addCriterion("status =", value, "status");
+        public Criteria andSendStatusEqualTo(Integer value) {
+            addCriterion("send_status =", value, "sendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(Integer value) {
-            addCriterion("status <>", value, "status");
+        public Criteria andSendStatusNotEqualTo(Integer value) {
+            addCriterion("send_status <>", value, "sendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(Integer value) {
-            addCriterion("status >", value, "status");
+        public Criteria andSendStatusGreaterThan(Integer value) {
+            addCriterion("send_status >", value, "sendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("status >=", value, "status");
+        public Criteria andSendStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("send_status >=", value, "sendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(Integer value) {
-            addCriterion("status <", value, "status");
+        public Criteria andSendStatusLessThan(Integer value) {
+            addCriterion("send_status <", value, "sendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(Integer value) {
-            addCriterion("status <=", value, "status");
+        public Criteria andSendStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("send_status <=", value, "sendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<Integer> values) {
-            addCriterion("status in", values, "status");
+        public Criteria andSendStatusIn(List<Integer> values) {
+            addCriterion("send_status in", values, "sendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<Integer> values) {
-            addCriterion("status not in", values, "status");
+        public Criteria andSendStatusNotIn(List<Integer> values) {
+            addCriterion("send_status not in", values, "sendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(Integer value1, Integer value2) {
-            addCriterion("status between", value1, value2, "status");
+        public Criteria andSendStatusBetween(Integer value1, Integer value2) {
+            addCriterion("send_status between", value1, value2, "sendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("status not between", value1, value2, "status");
+        public Criteria andSendStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("send_status not between", value1, value2, "sendStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusIsNull() {
+            addCriterion("read_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusIsNotNull() {
+            addCriterion("read_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusEqualTo(Integer value) {
+            addCriterion("read_status =", value, "readStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusNotEqualTo(Integer value) {
+            addCriterion("read_status <>", value, "readStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusGreaterThan(Integer value) {
+            addCriterion("read_status >", value, "readStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("read_status >=", value, "readStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusLessThan(Integer value) {
+            addCriterion("read_status <", value, "readStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("read_status <=", value, "readStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusIn(List<Integer> values) {
+            addCriterion("read_status in", values, "readStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusNotIn(List<Integer> values) {
+            addCriterion("read_status not in", values, "readStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusBetween(Integer value1, Integer value2) {
+            addCriterion("read_status between", value1, value2, "readStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReadStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("read_status not between", value1, value2, "readStatus");
             return (Criteria) this;
         }
 

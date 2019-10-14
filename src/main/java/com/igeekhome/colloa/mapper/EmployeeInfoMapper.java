@@ -2,8 +2,10 @@ package com.igeekhome.colloa.mapper;
 
 import com.igeekhome.colloa.domain.EmployeeInfo;
 import com.igeekhome.colloa.domain.EmployeeInfoExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.Collection;
+import java.util.List;
 
 public interface EmployeeInfoMapper {
     long countByExample(EmployeeInfoExample example);

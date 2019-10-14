@@ -1,7 +1,7 @@
 package com.igeekhome.colloa.service;
 
-import com.igeekhome.colloa.condition.MessageCondition;
 import com.igeekhome.colloa.domain.MessageInfo;
+import com.igeekhome.colloa.dto.MessageInfoDTO;
 import com.igeekhome.colloa.util.ResultObject;
 import com.igeekhome.colloa.util.TableDataNode;
 
@@ -42,24 +42,24 @@ public interface MessageService {
      *
      * @param page
      * @param limit
-     * @param receiverEmplCode 员工(消息接收人)编号
+     * @param senderEmplCode 员工(消息接收人)编号
      * @return
      */
     TableDataNode querySentMessage(Integer page,
                                    Integer limit,
-                                   String receiverEmplCode);
+                                   String senderEmplCode);
 
     /**
      * 4.检索保存在草稿箱中的消息[3]
      *
      * @param page
      * @param limit
-     * @param receiverEmplCode 员工(消息接收人)编号
+     * @param senderEmplCode 员工(消息创建人)编号
      * @return
      */
     TableDataNode queryDraftMessage(Integer page,
                                     Integer limit,
-                                    String receiverEmplCode);
+                                    String senderEmplCode);
 
     /**
      * 5.检索设为星标的消息
@@ -75,12 +75,29 @@ public interface MessageService {
                                    String receiverEmplCode);
 
     /**
-     * 6.模糊查询 (时间条件查询不实现)
+     * 6.1模糊查询 (时间条件查询不实现)
      *
+     * @param page
+     * @param limit
      * @param condition 查询条件[主题、收件人、发件人、时间段]
      * @return
      */
-    TableDataNode queryMessageByCondition(MessageCondition condition);
+    TableDataNode querySelfMessageByCondition(Integer page,
+                                              Integer limit,
+                                              MessageInfoDTO condition);
+
+    /**
+     * 6.2模糊查询 (时间条件查询不实现)
+     *
+     * @param page
+     * @param limit
+     * @param condition 查询条件[主题、收件人、发件人、时间段]
+     * @return
+     */
+    TableDataNode queryMessageByCondition(Integer page,
+                                          Integer limit,
+                                          MessageInfoDTO condition);
+
 
     /**
      * 7.查看消息详情
