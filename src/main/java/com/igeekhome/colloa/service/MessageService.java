@@ -87,7 +87,7 @@ public interface MessageService {
                                               MessageInfoDTO condition);
 
     /**
-     * 6.2模糊查询 (时间条件查询不实现)
+     * 6.2模糊查询 (管理员查询管；理)
      *
      * @param page
      * @param limit
@@ -145,6 +145,6 @@ public interface MessageService {
      * @param messageCode 消息编号
      * @return
      */
-    ResultObject removeMessage(String messageCode);
+    ResultObject removeMessage(String messageCode, Integer deleteTypeCode);
 
 }

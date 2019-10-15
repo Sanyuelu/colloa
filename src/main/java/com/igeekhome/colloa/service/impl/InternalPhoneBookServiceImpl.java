@@ -30,7 +30,7 @@ public class InternalPhoneBookServiceImpl implements InternalPhoneBookService {
     @Override
     public TableDataNode queryAllEmployee(Integer page, Integer limit) {
         //开启分页查询
-        PageHelper.startPage(page,limit);
+        PageHelper.startPage(page, limit);
         //自定义查询所有
         EmployeeInfoExample employeeInfoExample = new EmployeeInfoExample();
         employeeInfoExample.setOrderByClause("`priority` DESC");
@@ -45,7 +45,7 @@ public class InternalPhoneBookServiceImpl implements InternalPhoneBookService {
     @Override
     public TableDataNode queryEmployeeByCompany(Integer page, Integer limit, String companyCode) {
         //开启分页查询
-        PageHelper.startPage(page,limit);
+        PageHelper.startPage(page, limit);
         //自定义条件进行查询
         EmployeeInfoExample employeeInfoExample = new EmployeeInfoExample();
         employeeInfoExample.setOrderByClause("`priority` DESC");
@@ -62,7 +62,7 @@ public class InternalPhoneBookServiceImpl implements InternalPhoneBookService {
     @Override
     public TableDataNode queryEmployeeByDepartment(Integer page, Integer limit, String companyCode, String depaCode) {
         //开启分页查询
-        PageHelper.startPage(page,limit);
+        PageHelper.startPage(page, limit);
         //自定义条件进行查询
         EmployeeInfoExample employeeInfoExample = new EmployeeInfoExample();
         employeeInfoExample.setOrderByClause("`priority` DESC");
@@ -79,29 +79,29 @@ public class InternalPhoneBookServiceImpl implements InternalPhoneBookService {
     @Override
     public TableDataNode queryEmployeeByCondition(Integer page, Integer limit, EmployeeCondition condition) {
         //开启分页查询
-        PageHelper.startPage(page,limit);
+        PageHelper.startPage(page, limit);
         //自定义条件进行查询
         EmployeeInfoExample example = new EmployeeInfoExample();
         example.setOrderByClause("`priority` DESC");
         EmployeeInfoExample.Criteria criteria = example.createCriteria();
         criteria.andAvailableEqualTo(1);
-        if(condition.getEmplCode()!=null&&!"".equals(condition.getEmplCode().trim())){
-            criteria.andEmplCodeLike("%"+condition.getEmplCode()+"%");
+        if (condition.getEmplCode() != null && !"".equals(condition.getEmplCode().trim())) {
+            criteria.andEmplCodeLike("%" + condition.getEmplCode() + "%");
         }
-        if(condition.getName()!=null&&!"".equals(condition.getName().trim())){
-            criteria.andNameLike("%"+condition.getName()+"%");
+        if (condition.getName() != null && !"".equals(condition.getName().trim())) {
+            criteria.andNameLike("%" + condition.getName() + "%");
         }
-        if(condition.getTel()!=null&&!"".equals(condition.getTel().trim())){
-            criteria.andTelLike("%"+condition.getTel()+"%");
+        if (condition.getTel() != null && !"".equals(condition.getTel().trim())) {
+            criteria.andTelLike("%" + condition.getTel() + "%");
         }
-        if(condition.getMobileTel()!=null&&!"".equals(condition.getMobileTel().trim())){
-            criteria.andMobileTelLike("%"+condition.getMobileTel()+"%");
+        if (condition.getMobileTel() != null && !"".equals(condition.getMobileTel().trim())) {
+            criteria.andMobileTelLike("%" + condition.getMobileTel() + "%");
         }
-        if(condition.getEmail()!=null&&!"".equals(condition.getEmail().trim())){
-            criteria.andEmailLike("%"+condition.getEmail()+"%");
+        if (condition.getEmail() != null && !"".equals(condition.getEmail().trim())) {
+            criteria.andEmailLike("%" + condition.getEmail() + "%");
         }
-        if(condition.getWechat()!=null&&!"".equals(condition.getWechat().trim())){
-            criteria.andWechatLike("%"+condition.getWechat()+"%");
+        if (condition.getWechat() != null && !"".equals(condition.getWechat().trim())) {
+            criteria.andWechatLike("%" + condition.getWechat() + "%");
         }
         //从数据库查询
         List<EmployeeInfo> employeeInfoList = employeeInfoMapper.selectByExample(example);
@@ -137,8 +137,8 @@ public class InternalPhoneBookServiceImpl implements InternalPhoneBookService {
 
     @Override
     public ResultObject updateEmployeeInfo(EmployeeCondition condition) {
-        if(null == condition || null == condition.getEmplCode()){
-            return ResultObject.fail(500,"参数有误!");
+        if (null == condition || null == condition.getEmplCode()) {
+            return ResultObject.fail(500, "参数有误!");
         }
         //根据 condition 中 emplCode 查询 Employee
         EmployeeInfoExample employeeInfoExample = new EmployeeInfoExample();
@@ -147,7 +147,7 @@ public class InternalPhoneBookServiceImpl implements InternalPhoneBookService {
         employeeInfoExampleCriteria.andAvailableEqualTo(1);
         //从数据库查询
         List<EmployeeInfo> employeeInfoList = employeeInfoMapper.selectByExample(employeeInfoExample);
-        if(null != employeeInfoList && 0 != employeeInfoList.size()){
+        if (null != employeeInfoList && 0 != employeeInfoList.size()) {
             EmployeeInfo employeeInfo = employeeInfoList.get(0);
             employeeInfo.setAvatarUrl(condition.getAvatarUrl());
             employeeInfo.setSelfDesc(condition.getSelfDesc());
@@ -157,27 +157,28 @@ public class InternalPhoneBookServiceImpl implements InternalPhoneBookService {
             employeeInfo.setEmail(condition.getEmail());
             employeeInfo.setWechat(condition.getWechat());
             //更新员工通讯信息
-            int effectedNum = employeeInfoMapper.updateByExample(employeeInfo,employeeInfoExample);
-            if (effectedNum <= 0){
-                return ResultObject.fail(500,"更新失败！");
+            int effectedNum = employeeInfoMapper.updateByExample(employeeInfo, employeeInfoExample);
+            if (effectedNum <= 0) {
+                return ResultObject.fail(500, "更新失败！");
             }
-        }else {
-            return ResultObject.fail(500,"此员工不存在!");
+        } else {
+            return ResultObject.fail(500, "此员工不存在!");
         }
         return ResultObject.ok();
     }
 
     /**
      * 根据 employeeInfoList 获取页面显示数据
+     *
      * @param employeeInfoList
      * @return
      */
-    private TableDataNode getTableDataNode(List<EmployeeInfo> employeeInfoList){
+    private TableDataNode getTableDataNode(List<EmployeeInfo> employeeInfoList) {
         /**
          * 封装 List<EmployeePhoneBookDTO>
          */
         List<EmployeePhoneBookDTO> employeePhoneBookDTOList = new ArrayList<>();
-        for(EmployeeInfo employeeInfo : employeeInfoList){
+        for (EmployeeInfo employeeInfo : employeeInfoList) {
             //将 EmployeePhoneBookDTO 添加到 List<EmployeePhoneBookDTO>
             employeePhoneBookDTOList.add(getEmployeePhoneBookDTO(employeeInfo));
         }
@@ -187,9 +188,10 @@ public class InternalPhoneBookServiceImpl implements InternalPhoneBookService {
 
     /**
      * 获取员工的所属部门 根据 EmployeeInfo 封装 EmployeePhoneBookDTO
+     *
      * @return
      */
-    private EmployeePhoneBookDTO getEmployeePhoneBookDTO(EmployeeInfo employeeInfo){
+    private EmployeePhoneBookDTO getEmployeePhoneBookDTO(EmployeeInfo employeeInfo) {
         //构造 EmployeePhoneBookDTO 对象
         EmployeePhoneBookDTO employeePhoneBookDTO = new EmployeePhoneBookDTO();
         employeePhoneBookDTO.setName(employeeInfo.getName());
@@ -204,7 +206,7 @@ public class InternalPhoneBookServiceImpl implements InternalPhoneBookService {
         departmentInfoExampleCriteria.andCompanyCodeEqualTo(employeeInfo.getCompanyCode());
         departmentInfoExampleCriteria.andDepaCodeEqualTo(employeeInfo.getDepaCode());
         List<DepartmentInfo> departmentInfoList = departmentInfoMapper.selectByExample(departmentInfoExample);
-        if(null != departmentInfoList && 0 != departmentInfoList.size()){
+        if (null != departmentInfoList && 0 != departmentInfoList.size()) {
             employeePhoneBookDTO.setDepartmentInfo(departmentInfoList.get(0));
         }
         return employeePhoneBookDTO;
