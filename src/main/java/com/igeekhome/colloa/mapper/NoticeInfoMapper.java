@@ -1,10 +1,15 @@
 package com.igeekhome.colloa.mapper;
 
+import com.igeekhome.colloa.domain.EmployeeInfo;
 import com.igeekhome.colloa.domain.NoticeInfo;
 import com.igeekhome.colloa.domain.NoticeInfoExample;
 import java.util.List;
+
+import com.igeekhome.colloa.dto.NoticeInfoDTO;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface NoticeInfoMapper {
     long countByExample(NoticeInfoExample example);
 
@@ -15,6 +20,10 @@ public interface NoticeInfoMapper {
     int insert(NoticeInfo record);
 
     int insertSelective(NoticeInfo record);
+
+    List<EmployeeInfo> selectParticipantListByNoticeCode(String noticeCode);
+
+    List<NoticeInfoDTO> selectDTOByExampleWithBLOBs(NoticeInfoExample example);
 
     List<NoticeInfo> selectByExampleWithBLOBs(NoticeInfoExample example);
 

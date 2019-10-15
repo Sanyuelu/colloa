@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.igeekhome.colloa.mapper.NoticeInfoMapper">
+  <resultMap id="ResultMap" type="com.igeekhome.colloa.dto.NoticeInfoDTO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="category_code" jdbcType="VARCHAR" property="categoryCode" />
+    <result column="notice_code" jdbcType="VARCHAR" property="noticeCode" />
+    <result column="depa_code" jdbcType="VARCHAR" property="depaCode" />
+    <result column="editor_code" jdbcType="VARCHAR" property="editorCode" />
+    <result column="key_word" jdbcType="VARCHAR" property="keyWord" />
+    <result column="notice_name" jdbcType="VARCHAR" property="noticeName" />
+    <result column="thumbnail_url" jdbcType="VARCHAR" property="thumbnailUrl" />
+    <result column="attachment_url" jdbcType="VARCHAR" property="attachmentUrl" />
+    <result column="view_count" jdbcType="INTEGER" property="viewCount" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="avaliable" jdbcType="INTEGER" property="avaliable" />
+  </resultMap>
+  <resultMap extends="ResultMap" id="ResultMapWithBLOBsExt" type="com.igeekhome.colloa.dto.NoticeInfoDTO">
+    <result column="notice_content" jdbcType="LONGVARCHAR" property="noticeContent" />
+    <collection property="participantList" column="notice_code" ofType="EmployeeInfo"
+                select="com.igeekhome.colloa.mapper.NoticeInfoMapper.selectParticipantListByNoticeCode">
+      <id column="id" property="id"/>
+      <result column="empl_code" property="emplCode"/>
+      <result column="name" property="name"/>
+    </collection>
+  </resultMap>
+  <resultMap id="EmplResultMap" type="com.igeekhome.colloa.domain.EmployeeInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="empl_code" jdbcType="CHAR" property="emplCode" />
+    <result column="name" jdbcType="CHAR" property="name" />
+  </resultMap>
+  <sql id="Example_Where_ClauseExt">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_ListExt">
+    id, category_code, notice_code, depa_code, editor_code, key_word, notice_name, thumbnail_url, 
+    attachment_url, view_count, create_time, update_time, status, priority, avaliable
+  </sql>
+  <sql id="Blob_Column_ListExt">
+    notice_content
+  </sql>
+  <select id="selectDTOByExampleWithBLOBs" parameterType="com.igeekhome.colloa.domain.NoticeInfoExample" resultMap="ResultMapWithBLOBsExt">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_ListExt" />
+    ,
+    <include refid="Blob_Column_ListExt" />
+    from notice_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_ClauseExt" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectParticipantListByNoticeCode" parameterType="String" resultMap="EmplResultMap">
+    select
+    `empl_code`,`name`
+    from notice_participant AS np
+    inner join employee_info AS e
+    on np.participant_code = e.empl_code
+    where np.notice_code = #{notice_code}
+  </select>
+</mapper>
