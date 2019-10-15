@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.igeekhome.colloa.mapper.MessageInfoMapper">
+    <resultMap id="BaseResultMap" type="com.igeekhome.colloa.domain.MessageInfo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="message_code" jdbcType="VARCHAR" property="messageCode"/>
+        <result column="sender_code" jdbcType="VARCHAR" property="senderCode"/>
+        <result column="receiver_code" jdbcType="VARCHAR" property="receiverCode"/>
+        <result column="theme" jdbcType="VARCHAR" property="theme"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="file_url" jdbcType="VARCHAR" property="fileUrl"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="send_status" jdbcType="INTEGER" property="sendStatus"/>
+        <result column="read_status" jdbcType="INTEGER" property="readStatus"/>
+        <result column="is_star" jdbcType="INTEGER" property="isStar"/>
+        <result column="priority" jdbcType="INTEGER" property="priority"/>
+        <result column="sender_available" jdbcType="INTEGER" property="senderAvailable"/>
+        <result column="receiver_available" jdbcType="INTEGER" property="receiverAvailable"/>
+        <result column="available" jdbcType="INTEGER" property="available"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, message_code, sender_code, receiver_code, theme, content, file_url, create_time, 
+    update_time, send_status, read_status, is_star, priority, sender_available, receiver_available, 
+    available
+  </sql>
+    <select id="selectByExample" parameterType="com.igeekhome.colloa.domain.MessageInfoExample"
+            resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from message_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from message_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from message_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.igeekhome.colloa.domain.MessageInfoExample">
+        delete from message_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.igeekhome.colloa.domain.MessageInfo">
+    insert into message_info (id, message_code, sender_code, 
+      receiver_code, theme, content, 
+      file_url, create_time, update_time, 
+      send_status, read_status, is_star, 
+      priority, sender_available, receiver_available, 
+      available)
+    values (#{id,jdbcType=BIGINT}, #{messageCode,jdbcType=VARCHAR}, #{senderCode,jdbcType=VARCHAR}, 
+      #{receiverCode,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{fileUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{sendStatus,jdbcType=INTEGER}, #{readStatus,jdbcType=INTEGER}, #{isStar,jdbcType=INTEGER}, 
+      #{priority,jdbcType=INTEGER}, #{senderAvailable,jdbcType=INTEGER}, #{receiverAvailable,jdbcType=INTEGER}, 
+      #{available,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.igeekhome.colloa.domain.MessageInfo">
+        insert into message_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="messageCode != null">
+                message_code,
+            </if>
+            <if test="senderCode != null">
+                sender_code,
+            </if>
+            <if test="receiverCode != null">
+                receiver_code,
+            </if>
+            <if test="theme != null">
+                theme,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="fileUrl != null">
+                file_url,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="sendStatus != null">
+                send_status,
+            </if>
+            <if test="readStatus != null">
+                read_status,
+            </if>
+            <if test="isStar != null">
+                is_star,
+            </if>
+            <if test="priority != null">
+                priority,
+            </if>
+            <if test="senderAvailable != null">
+                sender_available,
+            </if>
+            <if test="receiverAvailable != null">
+                receiver_available,
+            </if>
+            <if test="available != null">
+                available,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="messageCode != null">
+                #{messageCode,jdbcType=VARCHAR},
+            </if>
+            <if test="senderCode != null">
+                #{senderCode,jdbcType=VARCHAR},
+            </if>
+            <if test="receiverCode != null">
+                #{receiverCode,jdbcType=VARCHAR},
+            </if>
+            <if test="theme != null">
+                #{theme,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="fileUrl != null">
+                #{fileUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sendStatus != null">
+                #{sendStatus,jdbcType=INTEGER},
+            </if>
+            <if test="readStatus != null">
+                #{readStatus,jdbcType=INTEGER},
+            </if>
+            <if test="isStar != null">
+                #{isStar,jdbcType=INTEGER},
+            </if>
+            <if test="priority != null">
+                #{priority,jdbcType=INTEGER},
+            </if>
+            <if test="senderAvailable != null">
+                #{senderAvailable,jdbcType=INTEGER},
+            </if>
+            <if test="receiverAvailable != null">
+                #{receiverAvailable,jdbcType=INTEGER},
+            </if>
+            <if test="available != null">
+                #{available,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.igeekhome.colloa.domain.MessageInfoExample"
+            resultType="java.lang.Long">
+        select count(*) from message_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update message_info
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=BIGINT},
+            </if>
+            <if test="record.messageCode != null">
+                message_code = #{record.messageCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.senderCode != null">
+                sender_code = #{record.senderCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.receiverCode != null">
+                receiver_code = #{record.receiverCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.theme != null">
+                theme = #{record.theme,jdbcType=VARCHAR},
+            </if>
+            <if test="record.content != null">
+                content = #{record.content,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fileUrl != null">
+                file_url = #{record.fileUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="record.createTime != null">
+                create_time = #{record.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.updateTime != null">
+                update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.sendStatus != null">
+                send_status = #{record.sendStatus,jdbcType=INTEGER},
+            </if>
+            <if test="record.readStatus != null">
+                read_status = #{record.readStatus,jdbcType=INTEGER},
+            </if>
+            <if test="record.isStar != null">
+                is_star = #{record.isStar,jdbcType=INTEGER},
+            </if>
+            <if test="record.priority != null">
+                priority = #{record.priority,jdbcType=INTEGER},
+            </if>
+            <if test="record.senderAvailable != null">
+                sender_available = #{record.senderAvailable,jdbcType=INTEGER},
+            </if>
+            <if test="record.receiverAvailable != null">
+                receiver_available = #{record.receiverAvailable,jdbcType=INTEGER},
+            </if>
+            <if test="record.available != null">
+                available = #{record.available,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update message_info
+        set id = #{record.id,jdbcType=BIGINT},
+        message_code = #{record.messageCode,jdbcType=VARCHAR},
+        sender_code = #{record.senderCode,jdbcType=VARCHAR},
+        receiver_code = #{record.receiverCode,jdbcType=VARCHAR},
+        theme = #{record.theme,jdbcType=VARCHAR},
+        content = #{record.content,jdbcType=VARCHAR},
+        file_url = #{record.fileUrl,jdbcType=VARCHAR},
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+        send_status = #{record.sendStatus,jdbcType=INTEGER},
+        read_status = #{record.readStatus,jdbcType=INTEGER},
+        is_star = #{record.isStar,jdbcType=INTEGER},
+        priority = #{record.priority,jdbcType=INTEGER},
+        sender_available = #{record.senderAvailable,jdbcType=INTEGER},
+        receiver_available = #{record.receiverAvailable,jdbcType=INTEGER},
+        available = #{record.available,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.igeekhome.colloa.domain.MessageInfo">
+        update message_info
+        <set>
+            <if test="messageCode != null">
+                message_code = #{messageCode,jdbcType=VARCHAR},
+            </if>
+            <if test="senderCode != null">
+                sender_code = #{senderCode,jdbcType=VARCHAR},
+            </if>
+            <if test="receiverCode != null">
+                receiver_code = #{receiverCode,jdbcType=VARCHAR},
+            </if>
+            <if test="theme != null">
+                theme = #{theme,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="fileUrl != null">
+                file_url = #{fileUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sendStatus != null">
+                send_status = #{sendStatus,jdbcType=INTEGER},
+            </if>
+            <if test="readStatus != null">
+                read_status = #{readStatus,jdbcType=INTEGER},
+            </if>
+            <if test="isStar != null">
+                is_star = #{isStar,jdbcType=INTEGER},
+            </if>
+            <if test="priority != null">
+                priority = #{priority,jdbcType=INTEGER},
+            </if>
+            <if test="senderAvailable != null">
+                sender_available = #{senderAvailable,jdbcType=INTEGER},
+            </if>
+            <if test="receiverAvailable != null">
+                receiver_available = #{receiverAvailable,jdbcType=INTEGER},
+            </if>
+            <if test="available != null">
+                available = #{available,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.igeekhome.colloa.domain.MessageInfo">
+    update message_info
+    set message_code = #{messageCode,jdbcType=VARCHAR},
+      sender_code = #{senderCode,jdbcType=VARCHAR},
+      receiver_code = #{receiverCode,jdbcType=VARCHAR},
+      theme = #{theme,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      file_url = #{fileUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      send_status = #{sendStatus,jdbcType=INTEGER},
+      read_status = #{readStatus,jdbcType=INTEGER},
+      is_star = #{isStar,jdbcType=INTEGER},
+      priority = #{priority,jdbcType=INTEGER},
+      sender_available = #{senderAvailable,jdbcType=INTEGER},
+      receiver_available = #{receiverAvailable,jdbcType=INTEGER},
+      available = #{available,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <select id="selectByCondition" resultMap="BaseResultMap">
+        select * from message_info
+        <where>
+            (sender_code = #{emplCode} and sender_available = 1
+            or receiver_code=#{emplCode} and receiver_available = 1)
+            and send_status = 1  and available = 1
+            <if test="theme!=null">
+                and theme like #{theme}
+            </if>
+        </where>
+        order by update_time desc
+    </select>
+
+    <select id="selectByEmplCondition" resultMap="BaseResultMap">
+        select * from message_info
+        <where>
+            (sender_code = #{selfCode} and sender_available = 1
+            and receiver_code in
+            <foreach collection="emplCodes" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            or receiver_code=#{selfCode} and receiver_available = 1
+            and sender_code in
+            <foreach collection="emplCodes" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>)
+            and send_status = 1 and available = 1
+            <if test="theme!=null">
+                and theme like #{theme}
+            </if>
+        </where>
+        order by update_time desc
+    </select>
+</mapper>
