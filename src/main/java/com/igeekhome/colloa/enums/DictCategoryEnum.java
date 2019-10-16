@@ -4,11 +4,14 @@ public enum DictCategoryEnum {
 
     // 字典类:[1:公司类,2:部门类,3:职务类,4:服务类(外部通讯录),5:公告类别]
 
-    COMPANY(1,"公司"),
-    DEPARTMENT(2,"部门"),
-    POSITION(3,"职务"),
-    EXTERNAL(4,"外部通讯录"),
-    NOTICE_TYPE(5,"公告类别");
+    COMPANY(1, "公司"),
+    DEPARTMENT(2, "部门"),
+    POSITION(3, "职务"),
+    EXTERNAL(4, "外部通讯录"),
+    NOTICE_TYPE(5, "公告类别"),
+    IS_AVAILABLE(1, "有效"),
+    NOT_AVAILABLE(0, "无效"),
+    ;
 
     private String categoryName;
     private Integer dictTypeId;

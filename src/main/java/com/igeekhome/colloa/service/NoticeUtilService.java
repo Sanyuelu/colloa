@@ -17,10 +17,9 @@ public interface NoticeUtilService {
 
     /**
      * 2、检索责任人所在公司的所有部门
-     * [DictCategory]
      *
      * @param editorCode 责任人工号
-     * @return data = List<DictCategory>
+     * @return data = List<DepartmentDTO>
      */
     ResultObject queryDepartment(String editorCode);
 
