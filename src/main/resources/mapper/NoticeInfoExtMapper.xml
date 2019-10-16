@@ -18,9 +18,10 @@
         <result column="priority" jdbcType="INTEGER" property="priority"/>
         <result column="avaliable" jdbcType="INTEGER" property="avaliable"/>
     </resultMap>
-    <resultMap id="ResultMapWithBLOBsExt" extends="ResultMap"  type="com.igeekhome.colloa.dto.NoticeInfoDTO">
+    <resultMap id="ResultMapWithBLOBsExt" extends="ResultMap" type="com.igeekhome.colloa.dto.NoticeInfoDTO">
         <result column="notice_content" jdbcType="LONGVARCHAR" property="noticeContent"/>
-        <collection property="participantList" column="notice_code" ofType="EmployeeInfo" select="selectParticipantListByNoticeCode"/>
+        <collection property="participantList" column="notice_code" ofType="EmployeeInfo"
+                    select="selectParticipantListByNoticeCode"/>
     </resultMap>
     <resultMap id="EmplResultMap" type="com.igeekhome.colloa.domain.EmployeeInfo">
         <id column="id" jdbcType="BIGINT" property="id"/>
@@ -94,18 +95,18 @@
         select * from notice_info
         where yearweek(date_format(update_time,'%y-%m-%d')) = yearweek(now())
         and status = 1 and avaliable = 1
-        order by update_time desc
+        order by priority desc,  update_time desc 
     </select>
     <select id="selectMonthNotice" resultMap="ResultMapWithBLOBsExt">
         select * from notice_info
         where date_format(update_time,'%Y-%m') = date_format(now(),'%Y-%m')
         and status = 1 and avaliable = 1
-        order by update_time desc
+        order by priority desc, update_time desc
     </select>
     <select id="selectQuarterNotice" resultMap="ResultMapWithBLOBsExt">
         select * from notice_info
         WHERE quarter(update_time) = quarter(now())
         and status = 1 and avaliable = 1
-        order by update_time desc
+        order by priority desc, update_time desc
     </select>
 </mapper>
