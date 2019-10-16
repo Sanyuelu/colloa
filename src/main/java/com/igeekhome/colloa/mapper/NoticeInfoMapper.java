@@ -3,11 +3,11 @@ package com.igeekhome.colloa.mapper;
 import com.igeekhome.colloa.domain.EmployeeInfo;
 import com.igeekhome.colloa.domain.NoticeInfo;
 import com.igeekhome.colloa.domain.NoticeInfoExample;
-import java.util.List;
-
 import com.igeekhome.colloa.dto.NoticeInfoDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface NoticeInfoMapper {
@@ -42,4 +42,10 @@ public interface NoticeInfoMapper {
     int updateByPrimaryKeyWithBLOBs(NoticeInfo record);
 
     int updateByPrimaryKey(NoticeInfo record);
+
+    List<NoticeInfo> selectWeekNotice();
+
+    List<NoticeInfo> selectMonthNotice();
+
+    List<NoticeInfo> selectQuarterNotice();
 }
