@@ -56,7 +56,8 @@ public class NoticeQueryServiceImpl implements NoticeQueryService {
             NoticeInfoExample noticeInfoExample = new NoticeInfoExample();
             noticeInfoExample.setOrderByClause("priority DESC,update_time DESC");
             noticeInfoExample.createCriteria()
-                    .andAvaliableEqualTo(1);
+                    .andAvaliableEqualTo(NoticeEnum.IS_AVAILABLE.getCode())
+                    .andStatusEqualTo(NoticeEnum.PUBLISH.getCode());
             noticeInfoDTOList = noticeInfoMapper.selectDTOByExampleWithBLOBs(noticeInfoExample);
         } catch (Exception e) {
             return TableDataNode.ok(0, null);
@@ -94,7 +95,8 @@ public class NoticeQueryServiceImpl implements NoticeQueryService {
             noticeInfoExample.setOrderByClause("priority DESC,update_time DESC");
             noticeInfoExample.createCriteria()
                     .andCategoryCodeEqualTo(NoticeEnum.NEWS_CATEGORY.getCategoryCode())
-                    .andAvaliableEqualTo(NoticeEnum.IS_AVAILABLE.getCode());
+                    .andAvaliableEqualTo(NoticeEnum.IS_AVAILABLE.getCode())
+                    .andStatusEqualTo(NoticeEnum.PUBLISH.getCode());
             noticeInfoDTOList = noticeInfoMapper.selectDTOByExampleWithBLOBs(noticeInfoExample);
         } catch (Exception e) {
             return TableDataNode.ok(0, null);
@@ -132,7 +134,8 @@ public class NoticeQueryServiceImpl implements NoticeQueryService {
             noticeInfoExample.setOrderByClause("priority DESC,update_time DESC");
             noticeInfoExample.createCriteria()
                     .andCategoryCodeEqualTo(NoticeEnum.INFORM_CATEGORY.getCategoryCode())
-                    .andAvaliableEqualTo(NoticeEnum.IS_AVAILABLE.getCode());
+                    .andAvaliableEqualTo(NoticeEnum.IS_AVAILABLE.getCode())
+                    .andStatusEqualTo(NoticeEnum.PUBLISH.getCode());
             noticeInfoDTOList = noticeInfoMapper.selectDTOByExampleWithBLOBs(noticeInfoExample);
         } catch (Exception e) {
             return TableDataNode.ok(0, null);
@@ -170,7 +173,8 @@ public class NoticeQueryServiceImpl implements NoticeQueryService {
             noticeInfoExample.setOrderByClause("priority DESC,update_time DESC");
             noticeInfoExample.createCriteria()
                     .andCategoryCodeEqualTo(NoticeEnum.RULES_CATEGORY.getCategoryCode())
-                    .andAvaliableEqualTo(NoticeEnum.IS_AVAILABLE.getCode());
+                    .andAvaliableEqualTo(NoticeEnum.IS_AVAILABLE.getCode())
+                    .andStatusEqualTo(NoticeEnum.PUBLISH.getCode());
             noticeInfoDTOList = noticeInfoMapper.selectDTOByExampleWithBLOBs(noticeInfoExample);
         } catch (Exception e) {
             return TableDataNode.ok(0, null);
@@ -208,7 +212,8 @@ public class NoticeQueryServiceImpl implements NoticeQueryService {
             noticeInfoExample.setOrderByClause("priority DESC,update_time DESC");
             noticeInfoExample.createCriteria()
                     .andCategoryCodeEqualTo(NoticeEnum.TRENDS_CATEGORY.getCategoryCode())
-                    .andAvaliableEqualTo(NoticeEnum.IS_AVAILABLE.getCode());
+                    .andAvaliableEqualTo(NoticeEnum.IS_AVAILABLE.getCode())
+                    .andStatusEqualTo(NoticeEnum.PUBLISH.getCode());
             noticeInfoDTOList = noticeInfoMapper.selectDTOByExampleWithBLOBs(noticeInfoExample);
         } catch (Exception e) {
             return TableDataNode.ok(0, null);
@@ -285,7 +290,8 @@ public class NoticeQueryServiceImpl implements NoticeQueryService {
             NoticeInfoExample noticeInfoExample = new NoticeInfoExample();
             noticeInfoExample.setOrderByClause("priority DESC,update_time DESC");
             NoticeInfoExample.Criteria noticeCriteria = noticeInfoExample.createCriteria();
-            noticeCriteria.andAvaliableEqualTo(NoticeEnum.IS_AVAILABLE.getCode());
+            noticeCriteria.andAvaliableEqualTo(NoticeEnum.IS_AVAILABLE.getCode())
+                    .andStatusEqualTo(NoticeEnum.PUBLISH.getCode());
             //模糊查询（按主题、发布部门、创建时间、更新时间、关键字）
             if (StringUtils.isNotBlank(condition.getNoticeName())) {
                 noticeCriteria.andNoticeNameLike("%" + condition.getNoticeName() + "%");
