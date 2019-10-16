@@ -7,14 +7,14 @@ package com.igeekhome.colloa.enums;
  */
 
 public enum NoticeEnum {
-    NOT_SEND("未发送", 0),
-    SEND("已发送", 1),
+    NOT_PUBLISH("未发布", 0),
+    PUBLISH("已发布", 1),
     NOT_AVAILABLE("无效", 0),
     IS_AVAILABLE("有效", 1),
-    NewCategory("新闻资讯", "10001"),
-    InformCategory("通知公告", "10002"),
-    RuleCategory("规章制度", "10003"),
-    TrendsCategory("行业动态", "10004"),
+    NEWS_CATEGORY("新闻资讯", "10001"),
+    INFORM_CATEGORY("通知公告", "10002"),
+    RULES_CATEGORY("规章制度", "10003"),
+    TRENDS_CATEGORY("行业动态", "10004"),
     ;
 
     /**

@@ -18,14 +18,9 @@
         <result column="priority" jdbcType="INTEGER" property="priority"/>
         <result column="avaliable" jdbcType="INTEGER" property="avaliable"/>
     </resultMap>
-    <resultMap extends="ResultMap" id="ResultMapWithBLOBsExt" type="com.igeekhome.colloa.dto.NoticeInfoDTO">
+    <resultMap id="ResultMapWithBLOBsExt" extends="ResultMap"  type="com.igeekhome.colloa.dto.NoticeInfoDTO">
         <result column="notice_content" jdbcType="LONGVARCHAR" property="noticeContent"/>
-        <collection property="participantList" column="notice_code" ofType="EmployeeInfo"
-                    select="com.igeekhome.colloa.mapper.NoticeInfoMapper.selectParticipantListByNoticeCode">
-            <id column="id" property="id"/>
-            <result column="empl_code" property="emplCode"/>
-            <result column="name" property="name"/>
-        </collection>
+        <collection property="participantList" column="notice_code" ofType="EmployeeInfo" select="selectParticipantListByNoticeCode"/>
     </resultMap>
     <resultMap id="EmplResultMap" type="com.igeekhome.colloa.domain.EmployeeInfo">
         <id column="id" jdbcType="BIGINT" property="id"/>
@@ -95,19 +90,19 @@
         where np.notice_code = #{notice_code}
     </select>
 
-    <select id="selectWeekNotice" resultMap="ResultMap">
+    <select id="selectWeekNotice" resultMap="ResultMapWithBLOBsExt">
         select * from notice_info
         where yearweek(date_format(update_time,'%y-%m-%d')) = yearweek(now())
         and status = 1 and avaliable = 1
         order by update_time desc;
     </select>
-    <select id="selectMonthNotice" resultMap="ResultMap">
+    <select id="selectMonthNotice" resultMap="ResultMapWithBLOBsExt">
         select * from notice_info
         where date_format(update_time,'%Y-%m') = date_format(now(),'%Y-%m')
         and status = 1 and avaliable = 1
         order by update_time desc;
     </select>
-    <select id="selectQuarterNotice" resultMap="ResultMap">
+    <select id="selectQuarterNotice" resultMap="ResultMapWithBLOBsExt">
         select * from notice_info
         WHERE quarter(update_time) = quarter(now())
         and status = 1 and avaliable = 1

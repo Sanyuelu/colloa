@@ -43,9 +43,9 @@ public interface NoticeInfoMapper {
 
     int updateByPrimaryKey(NoticeInfo record);
 
-    List<NoticeInfo> selectWeekNotice();
+    List<NoticeInfoDTO> selectWeekNotice();
 
-    List<NoticeInfo> selectMonthNotice();
+    List<NoticeInfoDTO> selectMonthNotice();
 
-    List<NoticeInfo> selectQuarterNotice();
+    List<NoticeInfoDTO> selectQuarterNotice();
 }
